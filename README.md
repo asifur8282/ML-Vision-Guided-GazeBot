@@ -78,7 +78,7 @@ Below are real-world images from the project demo.
 
 | | | |
 |-|-|-|
-| ![Demo 1](images/demo_up.png) | ![Demo 2](images/demo_down.png) |
+| ![Demo 1](images/Demo_up.png) | ![Demo 2](images/Demo_down.png) |
 | *Person looks up — bot points upward* | *Person looks down — bot points downward* |
 | ![Demo 3](images/demo_left.png) | ![Demo 4](images/demo_right.png) |
 | *Left head turn — bot points left* | *Right head turn — bot points right* |
