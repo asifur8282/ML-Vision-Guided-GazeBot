@@ -41,6 +41,8 @@ Once uploaded, the board automatically creates a Bluetooth interface accessible 
 
 ### 2. Python Environment
 Install dependencies:
+**Recommended Python Version:** `Python 3.11`  
+Using higher versions (e.g., 3.12+) may cause compatibility issues with **cvzone** or **mediapipe** dependencies.
 
 ```bash
 pip install -r requirements.txt
@@ -48,11 +50,16 @@ pip install -r requirements.txt
 
 **requirements.txt**
 ```
-cvzone
-numpy
-opencv-python
-pyserial
+cvzone==1.6.1
+opencv-python==4.11.0.86
+pyserial==3.5
+
 ```
+> **Note:**  
+> - `cvzone` internally depends on **MediaPipe**, which is automatically installed when installing `cvzone`.  
+> - No explicit `mediapipe` import is required in the source code.
+
+
 
 ### 3. Bluetooth Connection
 1. Pair ESP32 with your PC via Bluetooth.  
@@ -103,6 +110,8 @@ ML-Vision-Guided-GazeBot/
 - **Dabble ESP32** fails to compile on board versions > **2.0.17**.  
 - Ensure the **ESP32Servo** library remains at **v3.0.7** for consistent PWM output.  
 - Bluetooth Serial sometimes disconnects after sleep mode; reconnect manually if needed.
+- **Python 3.11** is recommended — later versions can lead to OpenCV–cvzone runtime errors.
+
 
 ---
 
