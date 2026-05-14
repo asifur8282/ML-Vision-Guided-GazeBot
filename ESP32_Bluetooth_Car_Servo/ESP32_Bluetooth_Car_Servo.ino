@@ -106,12 +106,13 @@ void loop() {
 
   // Motor control from Dabble
   if (GamePad.isRightPressed()) {
-    rightMotorSpeed = MAX_MOTOR_SPEED;
-    leftMotorSpeed = MAX_MOTOR_SPEED;
-  }
-  if (GamePad.isLeftPressed()) {
     rightMotorSpeed = -MAX_MOTOR_SPEED;
     leftMotorSpeed = -MAX_MOTOR_SPEED;
+  }
+  if (GamePad.isLeftPressed()) {
+   
+     rightMotorSpeed = MAX_MOTOR_SPEED;
+    leftMotorSpeed = MAX_MOTOR_SPEED;
   }
   if (GamePad.isUpPressed()) {
     rightMotorSpeed = MAX_MOTOR_SPEED;
