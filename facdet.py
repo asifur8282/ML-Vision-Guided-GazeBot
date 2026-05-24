@@ -16,8 +16,8 @@ if not cap.isOpened():
     exit()
 
 
-port = "COM7"
-baud_rate = 9600 # These will vary based on the Ports the ESP32 gets connected too
+port = "COM3"
+baud_rate = 115200 # These will vary based on the Ports the ESP32 gets connected too
 ser = None
 
 try:
