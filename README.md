@@ -40,21 +40,50 @@ Upload the `ESP32_Bluetooth_Car_Servo.ino` sketch to your ESP32 board.
 Once uploaded, the board automatically creates a Bluetooth interface accessible from the **Dabble app**.
 
 ### 2. Python Environment
-Install dependencies:
 **Recommended Python Version:** `Python 3.11`  
 Using higher versions (e.g., 3.12+) may cause compatibility issues with **cvzone** or **mediapipe** dependencies.
 
+#### Quick Setup (Automated)
+Run the provided setup script to automatically create a virtual environment and install all dependencies:
+
+```powershell
+.\setup_gazebotenv.ps1
+```
+
+This script will:
+1. Create a virtual environment named `gazebotenv`
+2. Activate the environment
+3. Upgrade pip
+4. Install all dependencies from `requirements.txt`
+5. Verify the installation
+
+**Handling Execution Policy Errors:**
+If you encounter an execution policy error when running the script, execute this command first:
+
+```powershell
+Set-ExecutionPolicy -ExecutionPolicy RemoteSigned -Scope CurrentUser
+```
+
+Then run the setup script again.
+
+#### Manual Setup (Alternative)
+If you prefer to set up manually:
+
 ```bash
+python -m venv gazebotenv
+.\gazebotenv\Scripts\Activate.ps1
 pip install -r requirements.txt
 ```
 
-**requirements.txt**
+**Project Dependencies (requirements.txt)**
 ```
 cvzone==1.6.1
+mediapipe==0.10.5
+numpy==2.4.4
 opencv-python==4.11.0.86
 pyserial==3.5
-
 ```
+
 > **Note:**  
 > - `cvzone` internally depends on **MediaPipe**, which is automatically installed when installing `cvzone`.  
 > - No explicit `mediapipe` import is required in the source code.
@@ -97,12 +126,30 @@ Below are real-world images from the project demo.
 ```
 ML-Vision-Guided-GazeBot/
 │
-├── facedetection.py              # MediaPipe + OpenCV-based head detection
-├── facdet.py                     # Alternate/experimental detection module
+├── facdet.py                     # Main program - Face detection and servo control
+├── facedetection.py              # Alternative face detection module
+├── setup_gazebotenv.ps1          # Automated environment setup script
+├── requirements.txt              # Python dependencies
 ├── ESP32_Bluetooth_Car_Servo/
 │   └── ESP32_Bluetooth_Car_Servo.ino   # Main control firmware
 └── README.md
 ```
+
+### Running the Main Program
+The main program is located in **`facdet.py`**. To run it:
+
+```powershell
+# Activate the environment (if not already activated)
+.\gazebotenv\Scripts\Activate.ps1
+
+# Run the program
+python facdet.py
+```
+
+Ensure:
+- Your ESP32 is connected via Bluetooth
+- The COM port in `facdet.py` matches your ESP32's connection port
+- Your webcam is accessible and working
 
 ---
 
